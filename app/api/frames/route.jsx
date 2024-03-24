@@ -1,8 +1,5 @@
 /* eslint-disable react/jsx-key */
 import { createFrames, Button } from "frames.js/next";
-import { getFarcasterUserDetails, init } from "@airstack/frames";
-
-init(process.AIRSTACK_API_KEY);
 
 const frames = createFrames({
   basePath: "/api/frames",
@@ -10,7 +7,7 @@ const frames = createFrames({
 
 const handleRequest = frames(async (ctx) => {
   const type = ctx.searchParams.value || "home";
-
+  console.log(process.env.AIRSTACK_API_KEY);
   if (type === "home") {
     return {
       image: (
@@ -41,17 +38,10 @@ const handleRequest = frames(async (ctx) => {
     };
   } else if (type === "portfolio") {
     //API call for portfolio details
+
     console.log("input text :", ctx.message.inputText);
     const fidInput = await callApi(ctx.message.inputText);
     console.log("fid :", fidInput);
-    const input = {
-      fid: fidInput,
-    };
-    const { data, error } = await getFarcasterUserDetails(input);
-
-    if (error) throw new error();
-
-    console.log(data);
 
     return {
       image: (

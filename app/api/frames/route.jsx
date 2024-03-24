@@ -39,15 +39,73 @@ const handleRequest = frames(async (ctx) => {
   } else if (type === "portfolio") {
     //API call for portfolio details
 
-    console.log("input text :", ctx.message.inputText);
-    const fidInput = await callApi(ctx.message.inputText);
-    console.log("fid :", fidInput);
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJkNGE0YTU2Mi02ZjIzLTQxNzItYjJiOS05NjgyMjEzNDNkOGMiLCJlbWFpbCI6Inlhc2hhc3ZpY2hhdWRoYXJ5MTRAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siaWQiOiJGUkExIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9LHsiaWQiOiJOWUMxIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6IjEzOTAwZmRjNGZjMWU0YTk1NjY3Iiwic2NvcGVkS2V5U2VjcmV0IjoiYmVmNDkxOWMzYTJjOGRjMzUxYTkyMzMyOWE0NTFjZDMwMjY0YjY4MDNkY2Q5NTQ2ZmQ2NWM1OTA3YzVlNDFlOSIsImlhdCI6MTcxMTI4ODkyMH0.-7BFynMehlFaSc8GA4RQz213eRiICe0ZwCC73CCWjTg",
+      },
+    };
+
+    let portfolioData;
+    await fetch(
+      `https://api.pinata.cloud/v3/farcaster/users/${ctx.message.inputText}`,
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => (portfolioData = response.data))
+      .catch((err) => console.error(err));
+
+    console.log(portfolioData);
+
+    function calculateReputationScore(followers, following) {
+      // Define weights for followers and following
+      const followerWeight = 0.7; // Weight for followers
+      const followingWeight = 0.3; // Weight for following
+
+      // Normalize follower and following counts (optional)
+      const normalizedFollowers = followers / 1000; // Normalize to scale of 1k
+      const normalizedFollowing = following / 1000; // Normalize to scale of 1k
+
+      // Calculate reputation score
+      const reputationScore =
+        normalizedFollowers * followerWeight +
+        normalizedFollowing * followingWeight;
+
+      return reputationScore;
+    }
+
+    // Example usage:
+    const userFollowers = 5000; // Example follower count
+    const userFollowing = 2000; // Example following count
+
+    const userReputation = calculateReputationScore(
+      userFollowers,
+      userFollowing
+    );
+    console.log("User Reputation Score:", userReputation);
 
     return {
       image: (
-        <div tw="flex flex-col justify-center items-center w-full h-full">
-          <p tw="text-[40px]">Here is your portfolio!</p>
-          <p tw="">{JSON.stringify(data)}</p>
+        <div tw="flex flex-col  items-center w-full h-full bg-violet-300 text-white">
+          <p style="">{portfolioData.display_name}</p>
+          <p style="">{portfolioData.bio}</p>
+          <p style="">
+            <strong>Reputation score : {userReputation}</strong>
+          </p>
+
+          <p style="">
+            <strong>Following: {portfolioData.following_count}</strong>
+          </p>
+          <p style="">
+            <strong>Followers: {portfolioData.follower_count}</strong>
+          </p>
+
+          {/* <img
+            src="https://i.imgur.com/vyADobm.jpg"
+            alt="Profile Picture"
+            style="border-radius: 50%; max-width: 30%; height: auto;"
+          /> */}
         </div>
       ),
       buttons: [

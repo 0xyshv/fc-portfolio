@@ -78,19 +78,25 @@ const handleRequest = frames(async (ctx) => {
     console.log(portfolioData);
 
     function calculateReputationScore(followers, following) {
-      const followerWeight = 0.7;
-      const followingWeight = 0.3;
-      const normalizedFollowers = followers / 1000;
-      const normalizedFollowing = following / 1000;
+      // Define weights for followers and following
+      const followerWeight = 0.7; // Weight for followers
+      const followingWeight = 0.3; // Weight for following
+
+      // Normalize follower and following counts (optional)
+      const normalizedFollowers = followers / 1000; // Normalize to scale of 1k
+      const normalizedFollowing = following / 1000; // Normalize to scale of 1k
+
+      // Calculate reputation score
       const reputationScore =
         normalizedFollowers * followerWeight +
         normalizedFollowing * followingWeight;
 
       return reputationScore;
     }
+
     const userReputation = calculateReputationScore(
-      userFollowers,
-      userFollowing
+      portfolioData.follower_count,
+      portfolioData.following_count
     );
     console.log("User Reputation Score:", userReputation);
 

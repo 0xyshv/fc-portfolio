@@ -7,36 +7,59 @@ const frames = createFrames({
 
 const handleRequest = frames(async (ctx) => {
   const type = ctx.searchParams.value || "home";
+
   if (type === "home") {
     return {
       image: (
-        <span>Welcome to FC Portfolio. Enter FID to generate portfolio</span>
+        <div tw="flex flex-col justify-center items-center w-full h-full">
+          <p tw="text-[40px]">Welcome to the FC Portfolio!</p>
+          <p tw="">Click the button below to get started.</p>
+        </div>
       ),
-      textInput: "Enter FID",
       buttons: [
-        <Button action="post" target={{ query: { value: "userDetails" } }}>
-          Submit FID
+        <Button action="post" target={{ query: { value: "start" } }}>
+          Get Started
         </Button>,
       ],
     };
-  } else if (type === "userDetails") {
+  } else if (type === "start") {
     return {
-      image: <span>User Details</span>,
+      image: (
+        <div tw="flex flex-col justify-center items-center w-full h-full">
+          <p tw="">Enter a FID to generate portfolio.</p>
+        </div>
+      ),
       buttons: [
         <Button action="post" target={{ query: { value: "portfolio" } }}>
           Generate Portfolio
         </Button>,
       ],
+      textInput: "Type here!",
     };
-  } else type === "portfolio";
-  return {
-    image: <span>Personal portfolio details</span>,
-    buttons: [
-      <Button action="post" target={{ query: { value: "home" } }}>
-        Go to Home
-      </Button>,
-    ],
-  };
+  } else if (type === "portfolio") {
+    return {
+      image: (
+        <div tw="flex flex-col justify-center items-center w-full h-full">
+          <p tw="text-[40px]">Here is your portfolio!</p>
+          <p tw="">{results}</p>
+        </div>
+      ),
+      buttons: [
+        <Button action="post" target={{ query: { value: "start" } }}>
+          Generate another portfolio
+        </Button>,
+      ],
+    };
+  } else if (type === "error") {
+    return {
+      image: <span>There was an error</span>,
+      buttons: [
+        <Button action="post" target={{ query: { value: "home" } }}>
+          Go to Home
+        </Button>,
+      ],
+    };
+  }
 });
 
 export const GET = handleRequest;

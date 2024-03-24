@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FC Portfolio
 
-## Getting Started
+| Built during Framecaster
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. [All Links](#links)
+2. [Instructions to setup and run locally ](#instructions-to-setup)
+3. [Tech Stack](#tech-stack)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Links
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Deployed URL](https://fc-portfolio.vercel.app/)
+- [Git Repo with README](https://github.com/0xyshv/fc-portfolio/blob/main/README.md)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Instructions to Setup
 
-## Learn More
+Follow these instructions to set up and run the project:
 
-To learn more about Next.js, take a look at the following resources:
+**Using Github**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Clone the Git repository: `https://github.com/0xyshv/fc-portfolio.git`
+- Install project dependencies: `pnpm install`
+- Start the development server: `pnpm run dev`
+- Start the Local @frame.js/debugger : `frames`
+- Access the frame app in your browser at [http://localhost:3010](http://localhost:3010)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Tech Stack
 
-## Deploy on Vercel
+- @frames.js
+- @frames.js/debugger
+- Pinata Farcaster API
+- Nextjs & Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Github
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[Yashasvi Chaudhary](https://github.com/0xyshv)
+
+### Twitter / X
+
+[Yashasvi Chaudhary](https://twitter.com/0xyshv)
+
+## Thanks
+
+- I appreciate your interest in my project and welcome contributions and feature suggestions.

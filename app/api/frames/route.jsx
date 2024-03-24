@@ -10,6 +10,16 @@ const handleRequest = frames(async (ctx) => {
   console.log(process.env.AIRSTACK_API_KEY);
   if (type === "home") {
     return {
+      accepts: [
+        {
+          id: "farcaster",
+          version: "vNext",
+        },
+        {
+          id: "xmtp",
+          version: "vNext",
+        },
+      ],
       image: (
         <div tw="flex flex-col justify-center items-center w-full h-full">
           <p tw="text-[40px]">Welcome to the FC Portfolio!</p>
@@ -24,6 +34,16 @@ const handleRequest = frames(async (ctx) => {
     };
   } else if (type === "start") {
     return {
+      accepts: [
+        {
+          id: "farcaster",
+          version: "vNext",
+        },
+        {
+          id: "xmtp",
+          version: "vNext",
+        },
+      ],
       image: (
         <div tw="flex flex-col justify-center items-center w-full h-full">
           <p tw="">Enter a FID to generate portfolio.</p>
@@ -59,26 +79,16 @@ const handleRequest = frames(async (ctx) => {
     console.log(portfolioData);
 
     function calculateReputationScore(followers, following) {
-      // Define weights for followers and following
-      const followerWeight = 0.7; // Weight for followers
-      const followingWeight = 0.3; // Weight for following
-
-      // Normalize follower and following counts (optional)
-      const normalizedFollowers = followers / 1000; // Normalize to scale of 1k
-      const normalizedFollowing = following / 1000; // Normalize to scale of 1k
-
-      // Calculate reputation score
+      const followerWeight = 0.7;
+      const followingWeight = 0.3;
+      const normalizedFollowers = followers / 1000;
+      const normalizedFollowing = following / 1000;
       const reputationScore =
         normalizedFollowers * followerWeight +
         normalizedFollowing * followingWeight;
 
       return reputationScore;
     }
-
-    // Example usage:
-    const userFollowers = 5000; // Example follower count
-    const userFollowing = 2000; // Example following count
-
     const userReputation = calculateReputationScore(
       userFollowers,
       userFollowing
@@ -86,6 +96,16 @@ const handleRequest = frames(async (ctx) => {
     console.log("User Reputation Score:", userReputation);
 
     return {
+      accepts: [
+        {
+          id: "farcaster",
+          version: "vNext",
+        },
+        {
+          id: "xmtp",
+          version: "vNext",
+        },
+      ],
       image: (
         <div tw="flex flex-col  items-center w-full h-full bg-violet-300 text-white">
           <p style="">{portfolioData.display_name}</p>

@@ -30,6 +30,7 @@ Follow these instructions to set up and run the project:
 - @frames.js
 - @frames.js/debugger
 - Pinata Farcaster API
+- XMTP
 - Nextjs & Vercel
 
 ### Github

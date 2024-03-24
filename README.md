@@ -1,6 +1,6 @@
 # FC Portfolio
 
-| Built during Framecaster
+Track and manage online reputation for a farcaster account. Also get insights on other data points of a farcaster account. Analyze reputation score trends to enhance your online presence. | Built during Framecaster
 
 ## Table of Contents
 

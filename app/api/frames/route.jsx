@@ -62,8 +62,7 @@ const handleRequest = frames(async (ctx) => {
     const options = {
       method: "GET",
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJkNGE0YTU2Mi02ZjIzLTQxNzItYjJiOS05NjgyMjEzNDNkOGMiLCJlbWFpbCI6Inlhc2hhc3ZpY2hhdWRoYXJ5MTRAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siaWQiOiJGUkExIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9LHsiaWQiOiJOWUMxIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6IjEzOTAwZmRjNGZjMWU0YTk1NjY3Iiwic2NvcGVkS2V5U2VjcmV0IjoiYmVmNDkxOWMzYTJjOGRjMzUxYTkyMzMyOWE0NTFjZDMwMjY0YjY4MDNkY2Q5NTQ2ZmQ2NWM1OTA3YzVlNDFlOSIsImlhdCI6MTcxMTI4ODkyMH0.-7BFynMehlFaSc8GA4RQz213eRiICe0ZwCC73CCWjTg",
+        Authorization: `Bearer ${process.env.token}`,
       },
     };
 

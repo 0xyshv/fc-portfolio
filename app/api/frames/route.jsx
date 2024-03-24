@@ -4,7 +4,10 @@ import {
   getFarcasterUserDetails,
   FarcasterUserDetailsInput,
   FarcasterUserDetailsOutput,
+  init,
 } from "@airstack/frames";
+
+init(process.AIRSTACK_API_KEY);
 
 const frames = createFrames({
   basePath: "/api/frames",

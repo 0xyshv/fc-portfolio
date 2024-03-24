@@ -1,11 +1,6 @@
 /* eslint-disable react/jsx-key */
 import { createFrames, Button } from "frames.js/next";
-import {
-  getFarcasterUserDetails,
-  FarcasterUserDetailsInput,
-  FarcasterUserDetailsOutput,
-  init,
-} from "@airstack/frames";
+import { getFarcasterUserDetails, init } from "@airstack/frames";
 
 init(process.AIRSTACK_API_KEY);
 
@@ -57,6 +52,7 @@ const handleRequest = frames(async (ctx) => {
     if (error) throw new error();
 
     console.log(data);
+
     return {
       image: (
         <div tw="flex flex-col justify-center items-center w-full h-full">

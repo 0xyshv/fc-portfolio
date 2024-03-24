@@ -37,6 +37,9 @@ const handleRequest = frames(async (ctx) => {
       textInput: "Type here!",
     };
   } else if (type === "portfolio") {
+    console.log("input text :", ctx.message.inputText);
+    const fid = await callApi(ctx.message.inputText);
+    console.log("fid :", fid);
     return {
       image: (
         <div tw="flex flex-col justify-center items-center w-full h-full">

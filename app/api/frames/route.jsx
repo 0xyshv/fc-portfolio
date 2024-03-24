@@ -41,6 +41,8 @@ const main = async () => {
   }
 };
 
+main();
+
 const frames = createFrames({
   basePath: "/api/frames",
 });

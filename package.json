@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@airstack/frames": "^1.0.20",
     "@frames.js/debugger": "^0.1.9",
     "frames.js": "^0.9.5",
     "next": "14.1.4",

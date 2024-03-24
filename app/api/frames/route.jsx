@@ -1,5 +1,10 @@
 /* eslint-disable react/jsx-key */
 import { createFrames, Button } from "frames.js/next";
+import {
+  getFarcasterUserDetails,
+  FarcasterUserDetailsInput,
+  FarcasterUserDetailsOutput,
+} from "@airstack/frames";
 
 const frames = createFrames({
   basePath: "/api/frames",
@@ -37,14 +42,23 @@ const handleRequest = frames(async (ctx) => {
       textInput: "Enter FID",
     };
   } else if (type === "portfolio") {
+    //API call for portfolio details
     console.log("input text :", ctx.message.inputText);
-    const fid = await callApi(ctx.message.inputText);
-    console.log("fid :", fid);
+    const fidInput = await callApi(ctx.message.inputText);
+    console.log("fid :", fidInput);
+    const input = {
+      fid: fidInput,
+    };
+    const { data, error } = await getFarcasterUserDetails(input);
+
+    if (error) throw new error();
+
+    console.log(data);
     return {
       image: (
         <div tw="flex flex-col justify-center items-center w-full h-full">
           <p tw="text-[40px]">Here is your portfolio!</p>
-          <p tw="">{results}</p>
+          <p tw="">{JSON.stringify(data)}</p>
         </div>
       ),
       buttons: [
